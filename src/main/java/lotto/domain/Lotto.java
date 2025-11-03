@@ -18,6 +18,20 @@ public class Lotto {
         }
     }
 
+    public int countMatchingNumbers(WinningLotto winningLotto) {
+        int matchCount = 0;
+        for (int number : numbers) {
+            if (winningLotto.getNumbers().contains(number)) {
+                matchCount++;
+            }
+        }
+        return matchCount;
+    }
+
+    public boolean getBonusMatch(WinningLotto winningLotto) {
+        return numbers.contains(winningLotto.getBonusNumber());
+    }
+
     public List<Integer> getNumbers() {
         return Collections.unmodifiableList(numbers);
     }
