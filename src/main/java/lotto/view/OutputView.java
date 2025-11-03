@@ -11,6 +11,7 @@ public class OutputView {
     private static final String OUTPUT_RANK_STATISTICS = "당첨 통계\n---";
     private static final String OUTPUT_RANK_LINE = "%d개 일치%s (%,d원) - %d개";
     private static final String OUTPUT_BONUS_REQUIRED = ", 보너스 볼 일치";
+    private static final String OUTPUT_ROI = "총 수익률은 %,.1f%%입니다.";
 
     public void printLottoCount(int count) {
         System.out.printf(OUTPUT_LOTTO_COUNT + "\n", count);
@@ -42,6 +43,10 @@ public class OutputView {
                     rank.getPrizeMoney(),
                     count);
         }
+    }
+
+    public void printROI(double roi) {
+        System.out.printf(OUTPUT_ROI + "\n", roi);
     }
 
     private String getBonusInfo(boolean requireBonusMatch) {

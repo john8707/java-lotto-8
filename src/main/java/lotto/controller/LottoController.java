@@ -40,6 +40,7 @@ public class LottoController {
 
         outputView.printRankStatistics(rankCount);
         double roi = lottoService.calculateROI(rankCount, purchaseAmount.getTotalSpent());
+        outputView.printROI(roi);
     }
 
     private PurchaseAmount getPurchaseAmount() {
