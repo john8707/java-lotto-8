@@ -1,9 +1,12 @@
 package lotto.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Arrays;
+import java.util.HashMap;
 
 import lotto.domain.PurchaseAmount;
+import lotto.domain.Rank;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import lotto.domain.MatchResult;
@@ -32,6 +35,8 @@ public class LottoController {
         WinningLotto winningLotto = getWinningLotto();
         List<MatchResult> results = lottoService.calculateResults(lottos, winningLotto);
 
+        List<Rank> ranks = lottoService.getRanksFromResults(results);
+        Map<Rank, Integer> rankCount = aggregateRanks(ranks);
     }
 
     private PurchaseAmount getPurchaseAmount() {
@@ -51,5 +56,13 @@ public class LottoController {
 
         int bonusNumber = Integer.parseInt(inputBonusNumber);
         return new WinningLotto(winningNumbers, bonusNumber);
+    }
+
+    private Map<Rank, Integer> aggregateRanks(List<Rank> ranks) {
+        Map<Rank, Integer> rankCountMap = new HashMap<>();
+        for (Rank rank : ranks) {
+            rankCountMap.put(rank, rankCountMap.getOrDefault(rank, 0) + 1);
+        }
+        return rankCountMap;
     }
 }

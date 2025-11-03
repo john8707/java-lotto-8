@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import lotto.domain.MatchResult;
+import lotto.domain.Rank;
 import lotto.domain.LottoNumberGenerator;
 
 public class LottoService {
@@ -32,5 +33,14 @@ public class LottoService {
             results.add(winningResult);
         }
         return results;
+    }
+
+    public List<Rank> getRanksFromResults(List<MatchResult> results) {
+        List<Rank> ranks = new ArrayList<>();
+        for (MatchResult result : results) {
+            Rank rank = Rank.getRank(result.getMatchCount(), result.isBonusMatch());
+            ranks.add(rank);
+        }
+        return ranks;
     }
 }
