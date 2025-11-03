@@ -8,5 +8,6 @@ public class LottoController {
     }
 
     public void run() {
+        String purchaseAmount = inputView.readPurchaseAmount();
     }
 }
