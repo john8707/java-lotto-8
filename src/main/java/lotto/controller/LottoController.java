@@ -11,6 +11,7 @@ import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import lotto.domain.MatchResult;
 import lotto.service.LottoService;
+import lotto.validation.InputValidator;
 import lotto.view.InputView;
 import lotto.view.OutputView;
 
@@ -44,22 +45,43 @@ public class LottoController {
     }
 
     private PurchaseAmount getPurchaseAmount() {
-        String input = inputView.readPurchasePrice();
-        int price = Integer.parseInt(input);
-        return new PurchaseAmount(price);
+        while (true) {
+            try {
+                String input = inputView.readPurchasePrice();
+                InputValidator.validatePurchasePrice(input);
+                
+                int price = Integer.parseInt(input);
+                
+                return new PurchaseAmount(price);
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+                return getPurchaseAmount();
+            }
+        }
     }
 
     private WinningLotto getWinningLotto() {
-        String inputWinningNumbers = inputView.readWinningNumbers();
-        String inputBonusNumber = inputView.readBonusNumber();
+        while (true) {
+            try {
+                String inputWinningNumbers = inputView.readWinningNumbers();
+                InputValidator.validateWinningNumbers(inputWinningNumbers);
 
-        List<Integer> winningNumbers = Arrays.stream(inputWinningNumbers.split(","))
-                .map(String::trim)
-                .map(Integer::parseInt)
-                .toList();
+                String inputBonusNumber = inputView.readBonusNumber();
+                InputValidator.validateBonusNumber(inputBonusNumber);
 
-        int bonusNumber = Integer.parseInt(inputBonusNumber);
-        return new WinningLotto(winningNumbers, bonusNumber);
+                List<Integer> winningNumbers = Arrays.stream(inputWinningNumbers.split(","))
+                        .map(String::trim)
+                        .map(Integer::parseInt)
+                        .toList();
+
+                int bonusNumber = Integer.parseInt(inputBonusNumber);
+                return new WinningLotto(winningNumbers, bonusNumber);
+                
+            } catch (IllegalArgumentException e) {
+                outputView.printErrorMessage(e.getMessage());
+            }
+        }
+
     }
 
     private Map<Rank, Integer> aggregateRanks(List<Rank> ranks) {

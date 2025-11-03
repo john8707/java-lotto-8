@@ -34,17 +34,17 @@
 - [x] 수익률 계산
 
 ### VALIDATE
-- [ ] 구입 금액이 양수인지 -> validation/InputValidator
-- [ ] 구입 금액이 1000의 배수인지 -> domain/PurchaseAmount
-- [ ] 발행한 로또 번호가 유효한지
-    - [ ] 6자리인지
-    - [ ] 범위 내의 숫자인지
-    - [ ] 중복된 숫자는 없는지
-- [ ] 입력한 당첨 번호가 유효한지
-    - [ ] 6개 + 1개의 의 당첨 번호를 입력했는지
-    - [ ] 숫자를 입력했는지
-    - [ ] 범위 내의 숫자를 입력했는지(1~45)
-    - [ ] 중복된 숫자는 없는지
+- [x] 구입 금액이 양수인지 -> validation/InputValidator
+- [x] 구입 금액이 1000의 배수인지 -> domain/PurchaseAmount
+- [x] 발행한 로또 번호가 유효한지 -> validation/LottoValidator
+    - [x] 6자리인지
+    - [x] 범위 내의 숫자인지
+    - [x] 중복된 숫자는 없는지
+- [x] 입력한 당첨 번호가 유효한지 -> validation/LottoValidator
+    - [x] 6개 + 1개의 당첨 번호를 입력했는지
+    - [x] 숫자를 입력했는지 -> validation/InputValidator
+    - [x] 범위 내의 숫자를 입력했는지(1~45)
+    - [x] 중복된 숫자는 없는지
 
 ### OUTPUT
 - [x] 발행한 로또 수량 출력
