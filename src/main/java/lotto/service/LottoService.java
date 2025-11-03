@@ -1,6 +1,7 @@
 package lotto.service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.ArrayList;
 
 import lotto.domain.Lotto;
@@ -42,5 +43,20 @@ public class LottoService {
             ranks.add(rank);
         }
         return ranks;
+    }
+
+    public Long calculateTotalPrize(Map<Rank, Integer> rankCount) {
+        long totalPrize = 0L;
+        for (Map.Entry<Rank, Integer> entry : rankCount.entrySet()) {
+            Rank rank = entry.getKey();
+            Integer count = entry.getValue();
+            totalPrize += rank.getPrizeMoney() * count;
+        }
+        return totalPrize;
+    }
+
+    public double calculateROI(Map<Rank, Integer> rankCount, int totalSpent) {
+        long totalPrize = calculateTotalPrize(rankCount);
+        return (double) totalPrize / totalSpent * 100;
     }
 }

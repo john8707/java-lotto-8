@@ -11,4 +11,8 @@ public class PurchaseAmount {
     public int getLottoCount() {
         return purchasePrice / LOTTO_PRICE;
     }
+
+    public int getTotalSpent() {
+        return purchasePrice;
+    }
 }

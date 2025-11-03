@@ -39,6 +39,7 @@ public class LottoController {
         Map<Rank, Integer> rankCount = aggregateRanks(ranks);
 
         outputView.printRankStatistics(rankCount);
+        double roi = lottoService.calculateROI(rankCount, purchaseAmount.getTotalSpent());
     }
 
     private PurchaseAmount getPurchaseAmount() {
