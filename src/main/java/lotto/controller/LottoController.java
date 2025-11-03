@@ -31,13 +31,13 @@ public class LottoController {
 
         WinningLotto winningLotto = getWinningLotto();
         List<WinningResult> results = lottoService.calculateResults(lottos, winningLotto);
-        
+
     }
 
     private PurchaseAmount getPurchaseAmount() {
-        String input = inputView.readPurchaseAmount();
-        int amount = Integer.parseInt(input);
-        return new PurchaseAmount(amount);
+        String input = inputView.readPurchasePrice();
+        int price = Integer.parseInt(input);
+        return new PurchaseAmount(price);
     }
 
     private WinningLotto getWinningLotto() {

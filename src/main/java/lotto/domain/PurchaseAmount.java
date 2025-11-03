@@ -2,13 +2,13 @@ package lotto.domain;
 
 public class PurchaseAmount {
     private static final int LOTTO_PRICE = 1000;
-    private final int amount;
+    private final int purchasePrice;
 
-    public PurchaseAmount(int amount) {
-        this.amount = amount;
+    public PurchaseAmount(int purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 
     public int getLottoCount() {
-        return amount / LOTTO_PRICE;
+        return purchasePrice / LOTTO_PRICE;
     }
 }
