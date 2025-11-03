@@ -1,13 +1,15 @@
-package lotto;
+package lotto.controller;
+
+import lotto.view.InputView;
+import lotto.domain.PurchaseAmount;
 
 public class LottoController {
     private final InputView inputView;
     
-    LottoController() {
+    public LottoController() {
         this.inputView = new InputView();
     }
 
     public void run() {
-        String purchaseAmount = inputView.readPurchaseAmount();
     }
 }
