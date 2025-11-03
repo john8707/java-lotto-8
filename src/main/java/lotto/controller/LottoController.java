@@ -18,7 +18,7 @@ public class LottoController {
     private final InputView inputView;
     private final OutputView outputView;
     private final LottoService lottoService;
-    
+
     public LottoController() {
         this.inputView = new InputView();
         this.outputView = new OutputView();
@@ -37,6 +37,8 @@ public class LottoController {
 
         List<Rank> ranks = lottoService.getRanksFromResults(matchResults);
         Map<Rank, Integer> rankCount = aggregateRanks(ranks);
+
+        outputView.printRankStatistics(rankCount);
     }
 
     private PurchaseAmount getPurchaseAmount() {
