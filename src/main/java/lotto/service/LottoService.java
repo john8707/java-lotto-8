@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
-import lotto.domain.WinningResult;
+import lotto.domain.MatchResult;
 import lotto.domain.LottoNumberGenerator;
 
 public class LottoService {
@@ -23,12 +23,12 @@ public class LottoService {
         return lottos;
     }
 
-    public List<WinningResult> calculateResults(List<Lotto> lottos, WinningLotto winningLotto) {
-        List<WinningResult> results = new ArrayList<>();
+    public List<MatchResult> calculateResults(List<Lotto> lottos, WinningLotto winningLotto) {
+        List<MatchResult> results = new ArrayList<>();
         for (Lotto lotto : lottos) {
             int matchCount = lotto.countMatchingNumbers(winningLotto);
             boolean bonusMatch = lotto.getBonusMatch(winningLotto);
-            WinningResult winningResult = new WinningResult(matchCount, bonusMatch);
+            MatchResult winningResult = new MatchResult(matchCount, bonusMatch);
             results.add(winningResult);
         }
         return results;

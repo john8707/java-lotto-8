@@ -6,7 +6,7 @@ import java.util.Arrays;
 import lotto.domain.PurchaseAmount;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
-import lotto.domain.WinningResult;
+import lotto.domain.MatchResult;
 import lotto.service.LottoService;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -30,7 +30,7 @@ public class LottoController {
         outputView.printLottoNumbers(lottos);
 
         WinningLotto winningLotto = getWinningLotto();
-        List<WinningResult> results = lottoService.calculateResults(lottos, winningLotto);
+        List<MatchResult> results = lottoService.calculateResults(lottos, winningLotto);
 
     }
 
