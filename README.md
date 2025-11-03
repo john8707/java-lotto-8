@@ -26,17 +26,19 @@
 - [ ] 보너스 번호 입력
 
 ### PROCESS
+- [ ] 구입 금액에 따른 발행 매수 구하기
 - [ ] 로또 번호 발행
 - [ ] 당첨 여부 확인
 - [ ] 수익률 계산
+
+### VALIDATE
+- [ ] 구입 금액이 양수인지 -> validation/InputValidator
+- [ ] 구입 금액이 1000의 배수인지 -> domain/PurchaseAmount
 
 ### OUTPUT
 - [ ] 발행한 로또 수량 및 번호 출력
 - [ ] 당첨 내역 출력
 - [ ] 수익률 출력
-
-### EXCEPTION
-- [ ] 
 
 ### TEST
 - [ ] 

@@ -11,5 +11,12 @@ public class LottoController {
     }
 
     public void run() {
+        PurchaseAmount purchaseAmount = getPurchaseAmount();
+    }
+
+    private PurchaseAmount getPurchaseAmount() {
+        String input = inputView.readPurchaseAmount();
+        int amount = Integer.parseInt(input);
+        return new PurchaseAmount(amount);
     }
 }
