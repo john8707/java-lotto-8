@@ -24,13 +24,13 @@ public class LottoService {
         return lottos;
     }
 
-    public List<MatchResult> calculateResults(List<Lotto> lottos, WinningLotto winningLotto) {
+    public List<MatchResult> getMatchResults(List<Lotto> lottos, WinningLotto winningLotto) {
         List<MatchResult> results = new ArrayList<>();
         for (Lotto lotto : lottos) {
-            int matchCount = lotto.countMatchingNumbers(winningLotto);
-            boolean bonusMatch = lotto.getBonusMatch(winningLotto);
-            MatchResult winningResult = new MatchResult(matchCount, bonusMatch);
-            results.add(winningResult);
+            int matchCount = lotto.countMatchingNumbers(winningLotto.getNumbers());
+            boolean bonusMatch = lotto.getBonusMatch(winningLotto.getBonusNumber());
+            MatchResult matchResult = new MatchResult(matchCount, bonusMatch);
+            results.add(matchResult);
         }
         return results;
     }

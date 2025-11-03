@@ -33,9 +33,9 @@ public class LottoController {
         outputView.printLottoNumbers(lottos);
 
         WinningLotto winningLotto = getWinningLotto();
-        List<MatchResult> results = lottoService.calculateResults(lottos, winningLotto);
+        List<MatchResult> matchResults = lottoService.getMatchResults(lottos, winningLotto);
 
-        List<Rank> ranks = lottoService.getRanksFromResults(results);
+        List<Rank> ranks = lottoService.getRanksFromResults(matchResults);
         Map<Rank, Integer> rankCount = aggregateRanks(ranks);
     }
 
